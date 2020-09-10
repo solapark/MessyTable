@@ -126,11 +126,11 @@ class ASNet(nn.Module):
         self.config = config
         if config['features_net'] == 'FeaturesRes18':
             app = models.resnet18(pretrained=True)
-            app.load_state_dict(torch.load('resnet18.pth'))
+            app.load_state_dict(torch.load('/home/sap/resnet18.pth'))
             self.app = nn.Sequential(*list(app.children())[:-2])
 
             sur = models.resnet18(pretrained=True)
-            sur.load_state_dict(torch.load('resnet18.pth'))
+            sur.load_state_dict(torch.load('/home/sap/resnet18.pth'))
             self.sur = nn.Sequential(*list(sur.children())[:-2])
 
             self.dim = 512

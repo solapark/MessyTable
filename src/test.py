@@ -25,6 +25,7 @@ def retrieve_features(model_app, model_neighbor, feature_loader, config):
     multi_crop_feat_keys = []
 
     with torch.no_grad():
+        torch.multiprocessing.set_sharing_strategy('file_system')
         for sample_dict in feature_loader:
             scene_name = sample_dict['scene_name'][0]
             feature_vector_dict[scene_name] = {}
@@ -227,7 +228,7 @@ def eval_model(config, turn_on_save=True):
     fpr = FPR_95(dist_np, gt_inst_np)
     print('AP = {:0.3f}'.format(inst_AP))
     print('FPR = {:0.3f}'.format(fpr))
-    compute_IPAA_metric(results_to_save, dist_np, 'model_only')
+    #compute_IPAA_metric(results_to_save, dist_np, 'model_only')
 
     if config['save_features']:
         print('saving features...')

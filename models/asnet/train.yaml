@@ -1,4 +1,5 @@
 # data_dir: # please define your data_dir if your data is not placed at data/
+data_dir: /data1/sap/MessyTable
 train_json: train.json
 img_height: 1080
 img_width: 1920
