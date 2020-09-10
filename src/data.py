@@ -109,8 +109,10 @@ def prepare_training_samples(config):
             p_crop_id = a_crop_id
             content = scene_labels[scene]
             ext = '.jpg'
-            main_img_pathname = os.path.join(config['img_dir'], scene + '-0' + str(main_cam) + ext)
-            sec_img_pathname = os.path.join(config['img_dir'], scene + '-0' + str(sec_cam) + ext)
+            #main_img_pathname = os.path.join(config['img_dir'], scene + '-0' + str(main_cam) + ext)
+            #sec_img_pathname = os.path.join(config['img_dir'], scene + '-0' + str(sec_cam) + ext)
+            main_img_pathname = os.path.join(config['img_dir'], content['cameras'][main_cam]['pathname'])
+            sec_img_pathname = os.path.join(config['img_dir'], content['cameras'][sec_cam]['pathname'])
             batch_images_list.append(main_img_pathname)
             batch_images_list.append(sec_img_pathname)
             triplet = {

@@ -11,7 +11,7 @@ milestones: [6, 8]
 gamma: 0.1
 split_samples_func: prepare_training_samples
 batch_size: 1
-cam_selected_num: 3
+cam_selected_num: 8
 image_pairs_per_batch: 3
 data_augmentation: False
 triplet_batch_size: 64
@@ -23,3 +23,4 @@ loss_func: CooperativeTripletLoss
 triplet_margin: 3.0 
 mode: Triplet 
 scene_ratio: 1
+num_cam : 3

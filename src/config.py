@@ -32,17 +32,19 @@ def parse_config(args):
     config['triplet_batch_size'] = config['triplet_batch_size'] if 'triplet_batch_size' in config else config['batch_size']
     config['learning_rate'] = float(config['learning_rate'])
     config['zoomout_crop_num'] = 'single_crop' if len(config['zoomout_ratio']) == 1 else 'multi_crops'
+    config['num_cam'] = config['num_cam'] if 'num_cam' in config else 9
     
     # make cam_pairs
+    num_cam = config['num_cam']
     test_cam_pairs = []
-    for i in range(1,9):
-        for j in range(i+1,10):
+    for i in range(1,num_cam):
+        for j in range(i+1,num_cam+1):
             test_cam_pairs.append((str(i),str(j)))
     reversed_cam_pairs = []
     for cam_pair in test_cam_pairs:
         reversed_cam_pairs.append((cam_pair[1],cam_pair[0]))
     config['test_cam_pairs'] = test_cam_pairs
     config['train_cam_pairs'] = test_cam_pairs + reversed_cam_pairs
-    config['cam_list'] = [str(i) for i in range(1,10)]
+    config['cam_list'] = [str(i) for i in range(1,num_cam+1)]
 
     return config
